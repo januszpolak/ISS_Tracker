@@ -7,16 +7,19 @@ using System.Net;
 using System.Text;
 using System.Windows.Forms;
 
+
 namespace ISS_Tracker
 {
     public partial class Form1 : Form
     {
 
-        public double latitude { get; set; }
-        public double longitude { get; set; }
-        public string people { get; set; }
-        public string name { get; set; }
-       public Form1()
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+
+       
+
+
+        public Form1()
         {
             InitializeComponent();
             GetCoordinates();
@@ -38,10 +41,10 @@ namespace ISS_Tracker
                     label1.Text = "Latitude " + data.iss_position.latitude;
                     label2.Text = "Longitude " + data.iss_position.longitude;
 
-                    latitude = data.iss_position.latitude;
-                    longitude = data.iss_position.longitude;
-                    string latit = latitude.ToString().Replace(",", ".");
-                    string longit = longitude.ToString().Replace(",", ".");
+                    Latitude = data.iss_position.latitude;
+                    Longitude = data.iss_position.longitude;
+                    string latit = Latitude.ToString().Replace(",", ".");
+                    string longit = Longitude.ToString().Replace(",", ".");
 
 
                     StringBuilder queryAddress = new StringBuilder();
@@ -50,10 +53,12 @@ namespace ISS_Tracker
                 
                     webBrowser1.Navigate(queryAddress.ToString());
                     webBrowser1.ScriptErrorsSuppressed = true;
-            }
+                 }
                 
                 
             }
+
+            
 
             public void GetISSCrew()
             {
@@ -62,17 +67,27 @@ namespace ISS_Tracker
             string results;
             using (WebClient client = new WebClient())
             results = client.DownloadString("http://api.open-notify.org/astros.json");
-            dynamic crewResults = JObject.Parse(results);
-
+            
+            
+            dynamic crewResults = JsonConvert.DeserializeObject(results);
             var number = crewResults.number;
             label4.Text = number;
 
-            var people = crewResults.people;
-          
-            foreach (var person in people)
+            foreach (dynamic person in crewResults.people)
             {
-                label6.Text = person.name;
+                string per = person.name;
+                textBox1.AppendText(per);
+                textBox1.AppendText(Environment.NewLine);
+                textBox1.Multiline = true;
             }
+            
+
+            
+             
+
+
+
+
         }
 
         
