@@ -80,19 +80,12 @@ namespace ISS_Tracker
                 textBox1.AppendText(Environment.NewLine);
                 textBox1.Multiline = true;
             }
-            
-
-            
-             
-
-
-
 
         }
 
-        
-        
-
-
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            textBox1.BackColor = this.BackColor;
+        }
     }
 }
