@@ -45,18 +45,16 @@ namespace ISS_Tracker
                     Longitude = data.iss_position.longitude;
                     string latit = Latitude.ToString().Replace(",", ".");
                     string longit = Longitude.ToString().Replace(",", ".");
-
-
+                    
+                }
                     StringBuilder queryAddress = new StringBuilder();
-               
-                    queryAddress.Append("https://www.openstreetmap.org/?mlat=" + latit + "&mlon=" + longit + "#map=3/"+latit + "/" + longit);
-                
+
+                    queryAddress.Append("https://www.openstreetmap.org/?mlat=" + Latitude + "&mlon=" + Longitude + "#map=3/" + Latitude + "/" + Longitude);
+
                     webBrowser1.Navigate(queryAddress.ToString());
                     webBrowser1.ScriptErrorsSuppressed = true;
-                 }
-                
-                
-            }
+
+             }
 
             
 
@@ -71,7 +69,7 @@ namespace ISS_Tracker
             
             dynamic crewResults = JsonConvert.DeserializeObject(results);
             var number = crewResults.number;
-            label4.Text = number;
+            label4.Text = string.Format("There's {0} people in space: ", number);
 
             foreach (dynamic person in crewResults.people)
             {
@@ -86,6 +84,11 @@ namespace ISS_Tracker
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             textBox1.BackColor = this.BackColor;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            GetCoordinates();
         }
     }
 }
