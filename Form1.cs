@@ -90,5 +90,10 @@ namespace ISS_Tracker
         {
             GetCoordinates();
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            GetCoordinates();
+        }
     }
 }
