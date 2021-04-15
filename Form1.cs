@@ -35,8 +35,8 @@ namespace ISS_Tracker
                     var res = wb.DownloadString("http://api.open-notify.org/iss-now.json");
                     dynamic data = JsonConvert.DeserializeObject(res);
                   
-                    label1.Text = data.iss_position.latitude;
-                    label2.Text = data.iss_position.longitude;
+                    label1.Text = "Latitude " + data.iss_position.latitude;
+                    label2.Text = "Longitude " + data.iss_position.longitude;
 
                     latitude = data.iss_position.latitude;
                     longitude = data.iss_position.longitude;
