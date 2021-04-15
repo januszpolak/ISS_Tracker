@@ -63,7 +63,7 @@ namespace ISS_Tracker
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(764, 202);
+            this.label3.Location = new System.Drawing.Point(773, 202);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(172, 25);
             this.label3.TabIndex = 3;
@@ -91,18 +91,19 @@ namespace ISS_Tracker
             // 
             // webBrowser1
             // 
-            this.webBrowser1.Location = new System.Drawing.Point(12, 12);
+            this.webBrowser1.Location = new System.Drawing.Point(12, 103);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(720, 540);
+            this.webBrowser1.Size = new System.Drawing.Size(720, 449);
             this.webBrowser1.TabIndex = 7;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(766, 64);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label7.Location = new System.Drawing.Point(36, 24);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(209, 13);
+            this.label7.Size = new System.Drawing.Size(932, 55);
             this.label7.TabIndex = 8;
             this.label7.Text = "International Space Shuttle actual position ";
             // 
