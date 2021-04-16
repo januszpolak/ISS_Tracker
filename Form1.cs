@@ -31,8 +31,8 @@ namespace ISS_Tracker
             public void GetCoordinates()
             {
 
-
-                using (var wb = new WebClient())
+            // Get actual ISS position from open-notify.org API
+            using (var wb = new WebClient())
                 {
 
                     var res = wb.DownloadString("http://api.open-notify.org/iss-now.json");
@@ -47,6 +47,7 @@ namespace ISS_Tracker
                     string longit = Longitude.ToString().Replace(",", ".");
                     
                 }
+            // Open map with actual latitude and longitude
                     StringBuilder queryAddress = new StringBuilder();
 
                     queryAddress.Append("https://www.openstreetmap.org/?mlat=" + Latitude + "&mlon=" + Longitude + "#map=3/" + Latitude + "/" + Longitude);
@@ -56,9 +57,9 @@ namespace ISS_Tracker
 
              }
 
-            
 
-            public void GetISSCrew()
+        // Get actual number of people in space with names from open-notify.org API
+        public void GetISSCrew()
             {
 
 
@@ -71,6 +72,7 @@ namespace ISS_Tracker
             var number = crewResults.number;
             label4.Text = string.Format("There's {0} people in space: ", number);
 
+            // Show all astronauts names on list
             foreach (dynamic person in crewResults.people)
             {
                 string per = person.name;
@@ -81,16 +83,19 @@ namespace ISS_Tracker
 
         }
 
+        // Add transparent background to textBox object with astronauts names
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             textBox1.BackColor = this.BackColor;
         }
 
+        // Refresh actual position button
         private void button1_Click(object sender, EventArgs e)
         {
             GetCoordinates();
         }
 
+        // Refresh position on map every 60 seconds
         private void timer1_Tick(object sender, EventArgs e)
         {
             GetCoordinates();
